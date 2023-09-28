@@ -10,6 +10,8 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
+    for i in range(1, 10):
+      producer.produce('cclab', b'Hello World %d' % i)
     return {"message": Settings().broker}
 
 @app.get('/run')
